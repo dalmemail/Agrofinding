@@ -6,6 +6,8 @@ You can install a simple database using:
 - mysql> CREATE DATABASE database;
 - mysql> quit
 - $ mysql -u root -p database < database.sql
+
+
 INSTALL AGROFINDING
 ----------------------
 To install Agrofinding you need:
