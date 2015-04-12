@@ -4,7 +4,7 @@
 #include <mysql/mysql.h>
 
 int readBD(char **argv);
-int workBD(MYSQL_ROW row, int i);
+void workBD(MYSQL_ROW row, int i);
 
 int main(int argc, char **argv)
 {
@@ -29,6 +29,9 @@ int main(int argc, char **argv)
     break;
     case 2:
       printf("Error: Connecting to database.\n");
+    break;
+    case 3:
+      printf("Error: Your database is empty.\n");
     break;
     case 0:
       printf("Reading database... OK\n");
@@ -62,11 +65,14 @@ int readBD(char **argv)
     }
   }
   mysql_close(database);
+  if (i <= 0) {
+    return 3;
+  }
   workBD(row, i);
   return 0;
 }
 
-int workBD(MYSQL_ROW row, int i)
+void workBD(MYSQL_ROW row, int i)
 {
   int n[i];
   for (int p=0; p <= i; p++) {
